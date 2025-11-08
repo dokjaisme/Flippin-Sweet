@@ -1,0 +1,130 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    background-color: #F8F8F8; /* Soft Off-White/Pinkish */
+}
+
+h1 {
+    color: #FF69B4; /* Hot Pink yang cerah */
+    margin-bottom: 20px;
+}
+
+/* --- GRID DAN LAYOUT UTAMA --- */
+.memory-game {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr); 
+    gap: 15px;
+    perspective: 1000px; 
+    padding: 10px; /* Padding di sekitar board */
+    background: #FFF0F5; /* Background sangat soft pink di balik kartu */
+    border-radius: 20px; /* Sudut Papan yang bulat */
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05); /* Shadow halus di dalam */
+}
+
+.memory-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    
+    /* 1. KUNCI KELUCUAN: Sudut sangat bulat */
+    border-radius: 15px; 
+    
+    /* 2. KUNCI SOFTNESS: Soft Box Shadow (Neumorphism Look) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+                0 0 0 4px #FFFFFF; /* Garis Putih tipis (cute border) */
+    
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+}
+
+/* KARTU YANG SEDANG DIBALIK */
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+
+/* KARTU DEPAN & BELAKANG (Agar Menumpuk) */
+.front-face,
+.back-face {
+    width: 100%;
+    height: 100%;
+    padding: 5px; /* Kurangi padding agar gambar lebih besar */
+    position: absolute; 
+    
+    /* KUNCI KELUCUAN: Sudut sangat bulat */
+    border-radius: 15px; 
+    
+    backface-visibility: hidden;
+}
+
+.front-face {
+    background: #FFFFFF; 
+    transform: rotateY(180deg);
+}
+
+.back-face {
+    /* Ganti Ungu Keras dengan warna pastel yang lucu */
+    background: #AECDE0; /* Sky Blue Pastel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #FFF0F5; /* Border pink muda untuk pemisah */
+}
+
+/* Gambar di dalam kartu */
+.front-face img,
+.back-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 12px; /* Ikuti rounding kartu */
+}
+
+/* --- STYLING LEVEL SELECTOR BARU --- */
+
+.level-selector {
+    margin-top: 30px;
+    padding: 20px;
+    background: #FFFFFF;
+    border-radius: 15px; /* Sudut lebih bulat */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Shadow lebih jelas */
+    text-align: center;
+}
+
+.level-selector h2 {
+    color: #FF69B4; /* Hot Pink */
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.level-btn {
+    padding: 10px 20px;
+    margin: 0 8px;
+    border: none;
+    border-radius: 20px; 
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #A6E4C8; /* Mint Green */
+    color: #4B4B4B; 
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 3px 0 #FFFACD; /* Butter Yellow untuk 3D effect */
+}
+
+.level-btn:hover {
+    background-color: #8CFFB6; 
+}
+
+.level-btn:active {
+    box-shadow: 0 1px 0 #FFFACD; 
+    transform: translateY(2px); 
+}

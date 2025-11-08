@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flippin' Sweet!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Flippin' Sweet!</h1>
+    
+    <div class="main-menu">
+        <h2>Welcome to Flippin' Sweet!</h2>
+        <p>A Sanrio Memory Challenge</p>
+        <div class="level-selector">
+            <h2>Pilih Tingkat Kelucuan:</h2>
+            <button class="level-btn" onclick="showGameScreen('easy')">Level Easy (12 Kartu)</button>
+            <button class="level-btn" onclick="showGameScreen('medium')">Level Medium (16 Kartu)</button>
+            <button class="level-btn" onclick="showGameScreen('hard')">Level Hard (36 Kartu)</button>
+        </div>
+    </div>
+
+    <div class="game-screen hidden">
+        <section class="memory-game"></section>
+        
+        <button class="menu-btn" onclick="showMainMenu()">Kembali ke Menu</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
